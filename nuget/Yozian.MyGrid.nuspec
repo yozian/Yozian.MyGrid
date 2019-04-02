@@ -15,10 +15,10 @@
     <tags>fluent, stron type, grid, table</tags>
     <dependencies>
       <dependency id="Yozian.Extension" version="2.*" />
-      <dependency id="Microsoft.AspNetCore.Html.Abstractions" Version="2.*" />
-      <dependency id="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.*" />
-      <dependency id="Microsoft.AspNetCore.Mvc.Core" Version="2.*" />
-      <dependency id="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Html.Abstractions" version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Mvc.Abstractions" version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Mvc.Core" version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Mvc.ViewFeatures" version="2.*" />
     </dependencies>
     <repository type="git" commit="" url="https://github.com/yozian/Yozian.MyGrid"></repository>
   </metadata>
