@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Yozian.MyGrid</id>
+    <version>0.0.0</version>
+    <authors>yozian</authors>
+    <owners>yozian</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/yozian/Yozian.MyGrid</projectUrl>
+    <iconUrl>https://no_icon_url_here</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>fluent strong type grid generation</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright Ⓒ yozian 2019</copyright>
+    <tags>fluent, stron type, grid, table</tags>
+    <dependencies>
+      <dependency id="Yozian.Extension" version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Html.Abstractions" Version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Mvc.Core" Version="2.*" />
+      <dependency id="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.*" />
+    </dependencies>
+    <repository type="git" commit="" url="https://github.com/yozian/Yozian.MyGrid"></repository>
+  </metadata>
+</package>
