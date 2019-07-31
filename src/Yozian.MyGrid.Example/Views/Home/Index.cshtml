@@ -1,0 +1,69 @@
+﻿@using Yozian.MyGrid
+@using Yozian.MyGrid.Example.Utility
+@model List<Book>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+#my-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#my-table td, #my-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#my-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#my-table tr:hover {background-color: #ddd;}
+
+#my-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+<div class="text-center">
+    @{
+
+        var table = MyGrid.NewGrid(Model)
+            .Id("my-table")
+            .HtmlAttributes(new
+            {
+                width = "400px;"
+            })
+            .DefineColumns((binder) =>
+            {
+                // exmaple for get the display name default to property name
+                binder.ColumnFor(m => m.Id);
+
+                // exmaple for get the display name as header title
+                binder.ColumnFor(m => m.Name);
+
+                // exmaple for apply a formatter
+                binder.ColumnFor(m => m.CreatedAt).Format(MyFormatter.DateTime);
+
+                // exmaple for customized cell contents
+                binder.ColumnFor(
+                    "Operation",
+                    (td, m) =>
+                    {
+                        var btn = new TagBuilder("button");
+                        btn.InnerHtml.Append("Edit");
+
+                        td.InnerHtml.AppendHtml(btn);
+                    }
+                );
+            })
+            .Render();
+
+    }
+    @Html.Raw(table)
+</div>
