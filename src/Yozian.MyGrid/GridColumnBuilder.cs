@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Yozian.MyGrid
 {
-    public class GridColumnBinder<TModel>
+    public class GridColumnBuilder<TModel>
     {
         private List<GridColumn<TModel>> columns = new List<GridColumn<TModel>>();
 
@@ -16,7 +16,7 @@ namespace Yozian.MyGrid
             return this.columns;
         }
 
-        internal GridColumnBinder() { }
+        internal GridColumnBuilder() { }
 
         public GridColumn<TModel> ColumnFor(Expression<Func<TModel, object>> expression)
         {

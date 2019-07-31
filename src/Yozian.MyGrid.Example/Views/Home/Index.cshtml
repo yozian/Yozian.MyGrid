@@ -39,19 +39,19 @@
             {
                 width = "400px;"
             })
-            .DefineColumns((binder) =>
+            .DefineColumns((builder) =>
             {
                 // exmaple for get the display name default to property name
-                binder.ColumnFor(m => m.Id);
+                builder.ColumnFor(m => m.Id);
 
                 // exmaple for get the display name as header title
-                binder.ColumnFor(m => m.Name);
+                builder.ColumnFor(m => m.Name);
 
                 // exmaple for apply a formatter
-                binder.ColumnFor(m => m.CreatedAt).Format(MyFormatter.DateTime);
+                builder.ColumnFor(m => m.CreatedAt).Format(MyFormatter.DateTime);
 
                 // exmaple for customized cell contents
-                binder.ColumnFor(
+                builder.ColumnFor(
                     "Operation",
                     (td, m) =>
                     {

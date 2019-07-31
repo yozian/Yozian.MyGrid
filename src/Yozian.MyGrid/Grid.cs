@@ -16,7 +16,7 @@ namespace Yozian.MyGrid
 
         private string cssClass;
 
-        private GridColumnBinder<TModel> columnBinder = new GridColumnBinder<TModel>();
+        private GridColumnBuilder<TModel> columnBinder = new GridColumnBuilder<TModel>();
 
         private IEnumerable<TModel> source;
 
@@ -40,7 +40,7 @@ namespace Yozian.MyGrid
             return this;
         }
 
-        public Grid<TModel> DefineColumns(Action<GridColumnBinder<TModel>> binder)
+        public Grid<TModel> DefineColumns(Action<GridColumnBuilder<TModel>> binder)
         {
             binder(this.columnBinder);
 
