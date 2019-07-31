@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/yozian/Yozian.MyGrid</projectUrl>
     <iconUrl>https://no_icon_url_here</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>fluent strong type grid generation</description>
+    <description>Fluent strong type grid generation</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright Ⓒ yozian 2019</copyright>
     <tags>fluent, strong type, grid, table</tags>
