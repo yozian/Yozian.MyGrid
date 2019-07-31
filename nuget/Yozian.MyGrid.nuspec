@@ -12,9 +12,8 @@
     <description>fluent strong type grid generation</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright Ⓒ yozian 2019</copyright>
-    <tags>fluent, stron type, grid, table</tags>
+    <tags>fluent, strong type, grid, table</tags>
     <dependencies>
-      <dependency id="Yozian.Extension" version="2.*" />
       <dependency id="Microsoft.AspNetCore.Html.Abstractions" version="2.*" />
       <dependency id="Microsoft.AspNetCore.Mvc.Abstractions" version="2.*" />
       <dependency id="Microsoft.AspNetCore.Mvc.Core" version="2.*" />
