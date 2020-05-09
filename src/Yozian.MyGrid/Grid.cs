@@ -22,6 +22,9 @@ namespace Yozian.MyGrid
 
         private object htmlAttributes;
 
+        private object theadAtrributes { get; set; }
+
+        private object trAtrributes { get; set; }
 
         internal Grid(IEnumerable<TModel> source)
         {
@@ -56,6 +59,18 @@ namespace Yozian.MyGrid
             return this;
         }
 
+        public Grid<TModel> TheadAttributes(object attributes)
+        {
+            this.theadAtrributes = attributes;
+            return this;
+        }
+
+        public Grid<TModel> TrAttributes(object attributes)
+        {
+            this.trAtrributes = attributes;
+            return this;
+        }
+
         public HtmlString Render()
         {
             if (this.source == null)
@@ -76,12 +91,25 @@ namespace Yozian.MyGrid
             var tr = new TagBuilder("tr");
             var gridColumns = this.columnBinder.GetGridColumns();
 
+            if (this.theadAtrributes != null)
+            {
+                thead.MergeAttributes(
+                       HtmlHelper.AnonymousObjectToHtmlAttributes(this.theadAtrributes)
+                   );
+            }
+
             foreach (var column in gridColumns)
             {
                 //thead
                 var th = new TagBuilder("th");
 
-                th.AddCssClass(column.IsColumnInDetail ? "none" : "all");
+                if (column.ThAtrributes != null)
+                {
+                    th.MergeAttributes(
+                        HtmlHelper.AnonymousObjectToHtmlAttributes(column.ThAtrributes)
+                    );
+                }
+
                 th.InnerHtml.SetContent(column.ColumnName);
                 tr.InnerHtml.AppendHtml(th);
             }
@@ -101,6 +129,14 @@ namespace Yozian.MyGrid
             foreach (var model in this.source)
             {
                 var tr = new TagBuilder("tr");
+
+                if (this.trAtrributes != null)
+                {
+                    tr.MergeAttributes(
+                           HtmlHelper.AnonymousObjectToHtmlAttributes(this.trAtrributes)
+                       );
+                }
+
                 foreach (var column in gridColumns)
                 {
                     var td = new TagBuilder("td");
@@ -109,6 +145,14 @@ namespace Yozian.MyGrid
                         var prop = props[column.PropertyName];
                         var value = prop.GetValue(model);
                         column.ColumnValue = column.Formatter(value, model);
+
+                        if (column.TdAtrributes != null)
+                        {
+                            td.MergeAttributes(
+                                HtmlHelper.AnonymousObjectToHtmlAttributes(column.TdAtrributes)
+                            );
+                        }
+
                         td.InnerHtml.SetContent(column.ColumnValue);
                     }
                     else

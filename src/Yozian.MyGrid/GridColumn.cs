@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 
 namespace Yozian.MyGrid
 {
@@ -13,12 +14,13 @@ namespace Yozian.MyGrid
 
         internal string PropertyName { get; set; }
 
-        internal bool IsColumnInDetail { get; private set; }
-
-
         internal Func<object, TModel, string> Formatter { get; private set; }
 
         internal Action<TagBuilder, TModel> CustomizedTagBuilder { get; set; }
+
+        internal object ThAtrributes { get; set; }
+
+        internal object TdAtrributes { get; set; }
 
 
         internal GridColumn(GridColumnType type)
@@ -40,11 +42,19 @@ namespace Yozian.MyGrid
             return this;
         }
 
-        public GridColumn<TModel> InDetail()
+        public GridColumn<TModel> ThAttributes(object attributes)
         {
-            this.IsColumnInDetail = true;
+            this.ThAtrributes = attributes;
             return this;
         }
+
+
+        public GridColumn<TModel> TdAttributes(object attributes)
+        {
+            this.TdAtrributes = attributes;
+            return this;
+        }
+
 
         public GridColumn<TModel> Format(Func<object, TModel, string> formatter)
         {
