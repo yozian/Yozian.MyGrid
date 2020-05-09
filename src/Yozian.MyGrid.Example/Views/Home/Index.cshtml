@@ -6,29 +6,32 @@
     ViewData["Title"] = "Home Page";
 }
 <style>
-#my-table {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    #my-table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-#my-table td, #my-table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+        #my-table td, #my-table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
-#my-table tr:nth-child(even){background-color: #f2f2f2;}
+        #my-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-#my-table tr:hover {background-color: #ddd;}
+        #my-table tr:hover {
+            background-color: #ddd;
+        }
 
-#my-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-
+        #my-table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
 </style>
 <div class="text-center">
     @{
@@ -39,28 +42,38 @@
             {
                 width = "400px;"
             })
+            .TheadAttributes(new
+            {
+                style = "width:100px"
+            })
+            .TrAttributes(new { 
+                style ="opacity:0.75;"
+            })
             .DefineColumns((builder) =>
             {
                 // exmaple for get the display name default to property name
-                builder.ColumnFor(m => m.Id);
+                builder.ColumnFor(m => m.Id)
+                    .ThAttributes(new { style = "font-size:50px;" })
+                    .TdAttributes(new { style = "font-size:30px;" });
 
                 // exmaple for get the display name as header title
-                builder.ColumnFor(m => m.Name);
+                builder.ColumnFor(m => m.Name)
+                    .TdAttributes(new { style = "color:red;" });
 
                 // exmaple for apply a formatter
                 builder.ColumnFor(m => m.CreatedAt).Format(MyFormatter.DateTime);
 
                 // exmaple for customized cell contents
                 builder.ColumnFor(
-                    "Operation",
-                    (td, m) =>
-                    {
-                        var btn = new TagBuilder("button");
-                        btn.InnerHtml.Append("Edit");
+                        "Operation",
+                        (td, m) =>
+                        {
+                            var btn = new TagBuilder("button");
+                            btn.InnerHtml.Append("Edit");
 
-                        td.InnerHtml.AppendHtml(btn);
-                    }
-                );
+                            td.InnerHtml.AppendHtml(btn);
+                        }
+                    );
             })
             .Render();
 
