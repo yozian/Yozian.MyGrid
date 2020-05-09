@@ -34,28 +34,38 @@
                 {
                     width = "400px;"
                 })
+                .TheadAttributes(new
+                {
+                    style = "width:100px"
+                })
+                .TrAttributes(new { 
+                    style ="opacity:0.75;"
+                })
                 .DefineColumns((builder) =>
                 {
                     // exmaple for get the display name default to property name
-                    builder.ColumnFor(m => m.Id);
+                    builder.ColumnFor(m => m.Id)
+                        .ThAttributes(new { style = "font-size:50px;" })
+                        .TdAttributes(new { style = "font-size:30px;" });
 
                     // exmaple for get the display name as header title
-                    builder.ColumnFor(m => m.Name);
+                    builder.ColumnFor(m => m.Name)
+                        .TdAttributes(new { style = "color:red;" });
 
                     // exmaple for apply a formatter
                     builder.ColumnFor(m => m.CreatedAt).Format(MyFormatter.DateTime);
 
                     // exmaple for customized cell contents
                     builder.ColumnFor(
-                        "Operation",
-                        (td, m) =>
-                        {
-                            var btn = new TagBuilder("button");
-                            btn.InnerHtml.Append("Edit");
+                            "Operation",
+                            (td, m) =>
+                            {
+                                var btn = new TagBuilder("button");
+                                btn.InnerHtml.Append("Edit");
 
-                            td.InnerHtml.AppendHtml(btn);
-                        }
-                    );
+                                td.InnerHtml.AppendHtml(btn);
+                            }
+                        );
                 })
                 .Render();
 
@@ -88,33 +98,30 @@
 ``` html
 
 <table class="" id="my-table" width="400px;">
-    <thead>
+    <thead style="width: 100px;">
         <tr>
-            <th class="all">Id</th>
-            <th class="all">Book Name</th>
-            <th class="all">Create Time</th>
-            <th class="all">Operation</th>
+            <th style="font-size: 50px;">Id</th>
+            <th>Book Name</th>
+            <th>Create Time</th>
+            <th>Operation</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Advanced C# Programing</td>
+        <tr style="opacity: 0.75;">
+            <td style="font-size: 30px;">1</td>
+            <td style="color: red;">Advanced C# Programing</td>
             <td>2019-01-02 00:00:00</td>
-            <td>
-                <button>Edit</button>
-            </td>
+            <td><button>Edit</button></td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Javascript Programing</td>
+        <tr style="opacity: 0.75;">
+            <td style="font-size: 30px;">1</td>
+            <td style="color: red;">Javascript Programing</td>
             <td>2019-07-31 00:00:00</td>
-            <td>
-                <button>Edit</button>
-            </td>
+            <td><button>Edit</button></td>
         </tr>
     </tbody>
 </table>
+
 
 ```
 
